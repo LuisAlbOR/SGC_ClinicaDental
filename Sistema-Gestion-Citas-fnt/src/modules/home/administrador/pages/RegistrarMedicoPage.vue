@@ -2,58 +2,31 @@
   <div class="w-full max-w-md mx-auto mt-10">
     <h1 class="text-2xl font-bold text-center mb-6">Registro de Administrador</h1>
 
-    <FormKit type="form" @submit.prevent="submitForm" class="space-y-4" :>
+    <FormKit type="form" @submit.prevent="submitForm" class="space-y-4" :actions="false">
 
       <!-- Nombre -->
-      <FormKit
-        type="text"
-        name="nombre"
-        label="Nombre"
-        v-model="form.nombre"
-        input-class="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-        validation="required"
-        :validation-messages="{ required: 'El nombre es obligatorio.' }"
-      />
-
+      <FormKit type="text" name="nombre" label="Nombre" v-model="form.nombre"
+        input-class="mt-1 block w-full p-2 border border-gray-300 rounded-md" validation="required"
+        :validation-messages="{ required: 'El nombre es obligatorio.' }" />
+      <br>
       <!-- Apellido -->
-      <FormKit
-        type="text"
-        name="apellido"
-        label="Apellido"
-        v-model="form.apellido"
-        input-class="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-        validation="required"
-        :validation-messages="{ required: 'El apellido es obligatorio.' }"
-      />
-
+      <FormKit type="text" name="apellido" label="Apellido" v-model="form.apellido"
+        input-class="mt-1 block w-full p-2 border border-gray-300 rounded-md" validation="required"
+        :validation-messages="{ required: 'El apellido es obligatorio.' }" />
+      <br>
       <!-- Correo -->
-      <FormKit
-        type="email"
-        name="correo"
-        label="Correo Electrónico"
-        v-model="form.correo"
-        input-class="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-        validation="required|email"
-        :validation-messages="{ required: 'El correo es obligatorio.', email: 'Ingrese un correo válido.' }"
-      />
-
+      <FormKit type="email" name="correo" label="Correo Electrónico" v-model="form.correo"
+        input-class="mt-1 block w-full p-2 border border-gray-300 rounded-md" validation="required|email"
+        :validation-messages="{ required: 'El correo es obligatorio.', email: 'Ingrese un correo válido.' }" />
+      <br>
       <!-- Contraseña -->
-      <FormKit
-        type="password"
-        name="password"
-        label="Contraseña"
-        v-model="form.password"
-        input-class="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-        validation="required|min:6"
-        :validation-messages="{ required: 'La contraseña es obligatoria.', min: 'La contraseña debe tener al menos 6 caracteres.' }"
-      />
-
+      <FormKit type="password" name="password" label="Contraseña" v-model="form.password"
+        input-class="mt-1 block w-full p-2 border border-gray-300 rounded-md" validation="required|min:6"
+        :validation-messages="{ required: 'La contraseña es obligatoria.', min: 'La contraseña debe tener al menos 6 caracteres.' }" />
+      <br>
       <!-- Botón de envío -->
-      <FormKit
-        type="submit"
-        label="Registrarse"
-        input-class="w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
-      />
+      <FormKit type="submit" label="Registrarse"
+        input-class="w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition" />
 
     </FormKit>
 
