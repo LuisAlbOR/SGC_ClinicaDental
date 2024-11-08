@@ -1,7 +1,6 @@
 <template>
-    <div>
-      <h2 class="text-xl font-bold">Overview administrador</h2>
-      <p>Welcome to the overview section of the dashboard.</p>
+    <div class="flex items-center justify-center min-h-screen">
+      <h1 class="text-7xl font-extrabold text-slate-500 drop-shadow-lg">Bienvenido</h1>
     </div>
   </template>
   

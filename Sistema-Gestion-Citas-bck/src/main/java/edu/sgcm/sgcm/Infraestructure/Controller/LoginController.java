@@ -65,7 +65,7 @@ public class LoginController {
             }
         }
 
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Correo invalido1");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Correo invalido");
     }
 }
 

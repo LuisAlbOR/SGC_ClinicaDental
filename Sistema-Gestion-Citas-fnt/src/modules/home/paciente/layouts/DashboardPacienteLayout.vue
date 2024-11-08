@@ -5,92 +5,8 @@
       <div class="p-4 text-2xl font-semibold">Dashboard Administrador</div>
       <nav class="flex-1 px-4">
         <ul>
-          <li class="my-2">
-            <RouterLink :to="{ name: 'overviewAdministrador' }" class="block py-2 px-3 rounded hover:bg-gray-700">
-              Overview
-            </RouterLink>
-          </li>
-          <li class="my-2">
-            <div @click="toggleMedicoMenu"
-              class="flex items-center justify-between py-2 px-3 rounded cursor-pointer hover:bg-gray-700">
-              Medico
-              <svg :class="{ 'transform rotate-180': medicoMenuOpen }"
-                class="w-5 h-5 transition-transform duration-300">
-                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  d="M6 9l6 6 6-6" />
-              </svg>
-            </div>
-            <ul v-show="medicoMenuOpen" class="pl-6">
-              <li class="my-1">
-                <RouterLink :to="{ name: 'visualizarMedicosAdministrador' }"
-                  class="block py-2 px-3 rounded hover:bg-gray-700">
-                  Visualizar medicos
-                </RouterLink>
-              </li>
-            </ul>
-            <ul v-show="medicoMenuOpen" class="pl-6">
-              <li class="my-1">
-                <RouterLink :to="{ name: 'registrarMedicoAdministrador' }"
-                  class="block py-2 px-3 rounded hover:bg-gray-700">
-                  Registrar medico
-                </RouterLink>
-              </li>
-            </ul>
-          </li>
-          <li class="my-2">
-            <div @click="toggleAdministradorMenu"
-              class="flex items-center justify-between py-2 px-3 rounded cursor-pointer hover:bg-gray-700">
-              Administrador
-              <svg :class="{ 'transform rotate-180': administradorMenuOpen }"
-                class="w-5 h-5 transition-transform duration-300">
-                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  d="M6 9l6 6 6-6" />
-              </svg>
-            </div>
-            <ul v-show="administradorMenuOpen" class="pl-6">
-              <li class="my-1">
-                <RouterLink :to="{ name: 'visualizarAdministradoresAdministrador' }"
-                  class="block py-2 px-3 rounded hover:bg-gray-700">
-                  Visualizar administradores
-                </RouterLink>
-              </li>
-            </ul>
-            <ul v-show="administradorMenuOpen" class="pl-6">
-              <li class="my-1">
-                <RouterLink :to="{ name: 'registrarAdministradorAdministrador' }"
-                  class="block py-2 px-3 rounded hover:bg-gray-700">
-                  Registrar administrador
-                </RouterLink>
-              </li>
-            </ul>
-          </li>
-          <li class="my-2">
-            <div @click="togglePacienteMenu"
-              class="flex items-center justify-between py-2 px-3 rounded cursor-pointer hover:bg-gray-700">
-              Paciente
-              <svg :class="{ 'transform rotate-180': pacienteMenuOpen }"
-                class="w-5 h-5 transition-transform duration-300">
-                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  d="M6 9l6 6 6-6" />
-              </svg>
-            </div>
-            <ul v-show="pacienteMenuOpen" class="pl-6">
-              <li class="my-1">
-                <RouterLink :to="{ name: 'visualizarPacientesAdminsitrador' }"
-                  class="block py-2 px-3 rounded hover:bg-gray-700">
-                  Visualizar pacientes
-                </RouterLink>
-              </li>
-            </ul>
-            <ul v-show="pacienteMenuOpen" class="pl-6">
-              <li class="my-1">
-                <RouterLink :to="{ name: 'registrarPacienteAdministrador' }"
-                  class="block py-2 px-3 rounded hover:bg-gray-700">
-                  Registrar paciente
-                </RouterLink>
-              </li>
-            </ul>
-          </li>
+
+
           <li class="my-2">
             <div @click="toggleCitaMenu"
               class="flex items-center justify-between py-2 px-3 rounded cursor-pointer hover:bg-gray-700">
@@ -103,7 +19,7 @@
             </div>
             <ul v-show="citaMenuOpen" class="pl-6">
               <li class="my-1">
-                <RouterLink :to="{ name: 'visualizarCitaAdministrador' }"
+                <RouterLink :to="{ name: 'visualizarCitaPaciente', query: { id: id } }"
                   class="block py-2 px-3 rounded hover:bg-gray-700">
                   Visualizar citas
                 </RouterLink>
@@ -111,7 +27,7 @@
             </ul>
             <ul v-show="citaMenuOpen" class="pl-6">
               <li class="my-1">
-                <RouterLink :to="{ name: 'registrarCitaAdministrador' }"
+                <RouterLink :to="{ name: 'registrarCitaPaciente' , query: {id: id}}"
                   class="block py-2 px-3 rounded hover:bg-gray-700">
                   Registrar cita
                 </RouterLink>
@@ -210,8 +126,8 @@ const toggleCitaMenu= () =>{
 }
 
 const route = useRoute();
-const userName = route.query.userName; // Esto extrae el userName de la query
-
+const userName = route.query.userName as string; // Esto extrae el userName de la query
+const id = Number(route.query.id); // Convierte a número
 
 const goToProfile = () => {
   console.log('Ir al perfil del usuario');

@@ -34,11 +34,27 @@ public class CitaController {
         Optional<Medico> medicoOpt = medicoRepository.findById(datosRegistroCita.id_medico());
 
         if (pacienteOpt.isPresent() && medicoOpt.isPresent()) {
+            if (citaRepository.findByFechaAndHoraAndPacienteAndMedico(
+                    datosRegistroCita.fecha(), datosRegistroCita.hora(), pacienteOpt.get(), medicoOpt.get()).isPresent()) {
+                return ResponseEntity.status(HttpStatus.CONFLICT).body("Cita duplicada: ya existe una cita con estos datos.");
+            }
+            // Obtén todas las citas para el mismo médico en la misma fecha
+            List<Cita> citasEnFecha = citaRepository.findByMedicoAndFecha(medicoOpt.get(), datosRegistroCita.fecha());
+            // Compara la diferencia horaria
+            for (Cita cita : citasEnFecha) {
+                long differenceInMillis = Math.abs(cita.getHora().getTime() - datosRegistroCita.hora().getTime());
+                long differenceInMinutes = differenceInMillis / (60 * 1000);
+
+                if (differenceInMinutes < 60) {
+                    return ResponseEntity.status(HttpStatus.CONFLICT).body("Ya existe una cita en el mismo día con menos de una hora de diferencia.");
+                }
+            }
+
             Cita nuevaCita = new Cita();
             nuevaCita.setFecha(datosRegistroCita.fecha());
             nuevaCita.setHora(datosRegistroCita.hora());
-            nuevaCita.setId_paciente(pacienteOpt.get());
-            nuevaCita.setId_medico(medicoOpt.get());
+            nuevaCita.setPaciente(pacienteOpt.get());
+            nuevaCita.setMedico(medicoOpt.get());
 
             citaRepository.save(nuevaCita);
             return ResponseEntity.ok("Cita registrada con éxito");
@@ -63,6 +79,33 @@ public class CitaController {
             return ResponseEntity.ok().body(citaRepository.findById(id).get());
         }catch(Exception e){
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping(path = "/ObtenerCitasPorPaciente/{id_paciente}")
+    public ResponseEntity<List<Cita>> ObtenerCitasPorPaciente(@PathVariable Integer id_paciente) {
+
+        try {
+            List<Cita> citas = citaRepository.findByPacienteId(id_paciente);
+            if (citas.isEmpty()) {
+                return ResponseEntity.noContent().build(); // Si no hay citas, retorna 204 No Content
+            }
+            return ResponseEntity.ok(citas); // Retorna 200 OK con la lista de citas
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // Error interno del servidor
+        }
+    }
+
+    @GetMapping(path = "/ObtenerCitasPorMedico/{id_medico}")
+    public ResponseEntity<List<Cita>> ObtenerCitasPorMedico(@PathVariable Integer id_medico) {
+        try {
+            List<Cita> citas = citaRepository.findByMedicoId(id_medico);
+            if (citas.isEmpty()) {
+                return ResponseEntity.noContent().build(); // Si no hay citas, retorna 204 No Content
+            }
+            return ResponseEntity.ok(citas); // Retorna 200 OK con la lista de citas
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // Error interno del servidor
         }
     }
 

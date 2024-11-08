@@ -2,11 +2,13 @@
   <div v-if="visible" class="notification-overlay" @click="hideNotification">
     <div class="notification-window" @click.stop>
       <h3 :class="['notification-title', type]">{{ title }}</h3>
-      <p>{{ message }}</p>
+      <!-- Aplicamos una clase personalizada para el mensaje -->
+      <p class="notification-message">{{ message }}</p>
       <button ref="closeButton" @click="hideNotification">Cerrar</button>
     </div>
   </div>
 </template>
+
 
 <script setup lang="ts">
 import { ref, watch, computed, onMounted, onBeforeUnmount } from 'vue';
@@ -14,7 +16,7 @@ import { ref, watch, computed, onMounted, onBeforeUnmount } from 'vue';
 const props = defineProps({
   message: String,
   type: String,
-  visible: Boolean,
+  visible: Boolean
 });
 
 const emit = defineEmits(['update:visible']);
@@ -84,6 +86,13 @@ onBeforeUnmount(() => {
 
 .notification-title.error {
   color: red;
+}
+
+/* Asegurar que el mensaje siempre tenga color negro */
+.notification-message {
+  color: black;
+  margin-top: 10px;
+  font-size: 16px;
 }
 
 button {

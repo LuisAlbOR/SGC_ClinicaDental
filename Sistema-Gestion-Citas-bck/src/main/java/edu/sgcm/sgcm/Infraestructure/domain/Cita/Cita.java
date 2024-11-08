@@ -24,15 +24,15 @@ public class Cita {
     private Time hora;
     @ManyToOne
     @JoinColumn(name = "id_paciente", nullable = false)
-    private Paciente id_paciente;
+    private Paciente paciente;
     @ManyToOne
     @JoinColumn(name = "id_medico", nullable = false)
-    private Medico id_medico;
+    private Medico medico;
 
 
     public void ActualizarCita(DatosActualizarCita datosActualizarCita){
         this.fecha = datosActualizarCita.fecha();
         this.hora = datosActualizarCita.hora();
-        this.id_medico = datosActualizarCita.id_medico();
+        this.medico = datosActualizarCita.id_medico();
     }
 }

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import NotFound from "@/modules/common/pages/NoFound.vue";
+import path from "path";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,7 +38,7 @@ const router = createRouter({
       path: "/paciente",
       name: 'paciente',
       redirect: {name: "overviewPaciente"},
-      component: () => import("@/modules/home/paciente/layouts/DashboardLayout.vue"),
+      component: () => import("@/modules/home/paciente/layouts/DashboardPacienteLayout.vue"),
       children: [
         {
           path: "overviewPaciente",
@@ -45,15 +46,16 @@ const router = createRouter({
           component: () => import("@/modules/home/paciente/pages/OverviewPage.vue"),
         },
         {
-          path: "citaPaciente",
-          name: "citaPaciente",
-          component: () => import('@/modules/home/paciente/pages/CitaPage.vue'),
+          path: "visualizarCitaPaciente",
+          name: "visualizarCitaPaciente",
+          component: () => import('@/modules/home/paciente/pages/VisualizarCitaPacientePage.vue'),
         },
         {
-          path: "configuracionPaciente",
-          name: "configuracionPaciente",
-          component: () => import('@/modules/home/paciente/pages/ConfiguracionPage.vue'),
+          path: "registrarCitaPaciente",
+          name: "registrarCitaPaciente",
+          component: () => import('@/modules/home/paciente/pages/RegistrarCitaPacientePage.vue'),
         },
+
       ],
     },
     
@@ -63,7 +65,7 @@ const router = createRouter({
       path: "/medico",
       name: 'medico',
       redirect: {name: "overviewMedico"},
-      component: () => import("@/modules/home/medico/layouts/DashboardLayout.vue"),
+      component: () => import("@/modules/home/medico/layouts/DashboardMedicoLayout.vue"),
       children: [
         {
           path: "overviewMedico",
@@ -71,14 +73,14 @@ const router = createRouter({
           component: () => import("@/modules/home/medico/pages/OverviewPage.vue"),
         },
         {
-          path: "citaMedico",
-          name: "citaMedico",
-          component: () => import('@/modules/home/medico/pages/CitaPage.vue'),
+          path: "visualizarCitaMedico",
+          name: "visualizarCitaMedico",
+          component: () => import('@/modules/home/medico/pages/VisualizarCitaMedicoPage.vue'),
         },
         {
-          path: "configuracionMedico",
-          name: "configuracionMedico",
-          component: () => import('@/modules/home/medico/pages/ConfiguracionPage.vue'),
+          path: "registrarCitaMedico",
+          name: "registrarCitaMedico",
+          component: () => import('@/modules/home/medico/pages/RegistrarCitaMedicoPage.vue'),
         },
       ],
     },
@@ -96,11 +98,6 @@ const router = createRouter({
           component: () => import("@/modules/home/administrador/pages/OverviewPage.vue"),
         },
         {
-          path: "citaAdministrador",
-          name: "citaAdministrador",
-          component: () => import('@/modules/home/administrador/pages/CitaPage.vue'),
-        },
-        {
           path: "configuracionAdministrador",
           name: "configuracionAdministrador",
           component: () => import('@/modules/home/administrador/pages/ConfiguracionPage.vue'),
@@ -108,13 +105,43 @@ const router = createRouter({
         {
           path: "visualizarMedicosAdministrador",
           name: "visualizarMedicosAdministrador",
-          component: () => import('@/modules/home/administrador/pages/VisualizarMedicosPage.vue'),
+          component: () => import('@/modules/home/administrador/pages/VisualizarMedicosAdministradorPage.vue'),
         },
         {
           path: "registrarMedicoAdministrador",
           name: "registrarMedicoAdministrador",
-          component: () => import('@/modules/home/administrador/pages/RegistrarMedicoPage.vue'),
+          component: () => import('@/modules/home/administrador/pages/RegistrarMedicoAdministradorPage.vue'),
         },
+        {
+          path: "visualizarAdministradoresAdministrador",
+          name: "visualizarAdministradoresAdministrador",
+          component: () => import('@/modules/home/administrador/pages/VisualizarAdministradoresAdministradorPage.vue'),
+        },
+        {
+          path: "registrarAdministradoAdministrador",
+          name: "registrarAdministradorAdministrador",
+          component: () => import('@/modules/home/administrador/pages/RegistrarAdministradorAdministradorPage.vue')
+        },
+        {
+          path: "visualizarPacientesAdministrador",
+          name: "visualizarPacientesAdminsitrador",
+          component: () => import('@/modules/home/administrador/pages/VisualizarPacientesAdministradorPage.vue')
+        },
+        {
+          path: "registrarPacienteAdministrador",
+          name: "registrarPacienteAdministrador",
+          component: () => import('@/modules/home/administrador/pages/RegistrarPacienteAdministradorPage.vue')
+        },
+        {
+          path: "registrarCitaAdministrador",
+          name: "registrarCitaAdministrador",
+          component: () => import('@/modules/home/administrador/pages/RegistrarCitaAdministradorPage.vue')
+        },
+        {
+          path: "visualizarCitaAdministrador",
+          name: "visualizarCitaAdministrador",
+          component: () => import('@/modules/home/administrador/pages/VisualizarCitaAdministradorPage.vue')
+        }
       ],
     },
 

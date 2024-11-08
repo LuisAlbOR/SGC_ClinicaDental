@@ -70,6 +70,22 @@ const data = reactive({
   ocupacion: '',
 });
 
+const verification = (data : any) =>{
+      // Concatenar nombre y apellido para el userName
+      const userName = `${data.nombre} ${data.apellido}`;
+      const id = `${data.id}`;
+      setTimeout(() => {
+        if (data.ocupacion === 'Paciente') {
+        router.push({ path: '/paciente', query: { userName , id} });
+      } else if (data.ocupacion === 'Medico') {
+        router.push({ path: '/medico', query: { userName, id } });
+      } else {
+        router.push({ path: '/administrador', query: { userName } });
+      }
+      isLoading.value = false
+      showNotification.value = true;
+      },2000);
+}
 const login = async () => {
   isLoading.value = true;
   try {
@@ -86,13 +102,6 @@ const login = async () => {
       data.apellido = response.data.apellido;
       data.ocupacion = response.data.ocupacion;
 
-      if (data.ocupacion === 'paciente') {
-        router.push('/paciente');
-      } else if (data.ocupacion === 'medico') {
-        router.push('/medico');
-      } else {
-        router.push('/administrador');
-      }
     } else {
       notificationMessage.value = 'Error en el login: ' + response.statusText;
       notificationType.value = 'error';
@@ -109,8 +118,7 @@ const login = async () => {
       notificationType.value = 'error';
     }
   } finally {
-    showNotification.value = true;
-    isLoading.value = false;
+    verification(data);
   }
 };
 
@@ -120,7 +128,3 @@ const handleKeyupEnter = () => {
   }
 };
 </script>
-
-<style scoped>
-/* Aquí puedes agregar estilos específicos para este componente */
-</style>

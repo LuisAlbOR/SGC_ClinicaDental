@@ -29,7 +29,7 @@ public class Medico {
         this.nombreMedico = datosRegistroMedico.nombre();
         this.apellidoMedico = datosRegistroMedico.apellido();
         this.especialidadMedico = datosRegistroMedico.especialidad();
-        this.telefonoMedico = datosRegistroMedico.especialidad();
+        this.telefonoMedico = datosRegistroMedico.telefono();
         this.correoMedico = datosRegistroMedico.correo();
         this.passwordMedico = datosRegistroMedico.password();
     }
