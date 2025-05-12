@@ -1,0 +1,1 @@
+import{_ as o,c as n,a as t,o as s}from"./index-ZwJaeH-t.js";const a={};function r(c,e){return s(),n("div",null,e[0]||(e[0]=[t("h2",{class:"text-xl font-bold"},"Settings administrador",-1),t("p",null,"Welcome to the settings section of the dashboard.",-1)]))}const i=o(a,[["render",r]]);export{i as default};

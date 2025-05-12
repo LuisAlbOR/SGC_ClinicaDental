@@ -1,0 +1,1 @@
+import{_ as t,c as s,a as o,o as n}from"./index-ZwJaeH-t.js";const r={},a={class:"flex items-center justify-center min-h-screen"};function c(i,e){return n(),s("div",a,e[0]||(e[0]=[o("h1",{class:"text-7xl font-extrabold text-slate-500 drop-shadow-lg"},"Bienvenido",-1)]))}const d=t(r,[["render",c]]);export{d as default};

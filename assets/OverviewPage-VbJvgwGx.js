@@ -1,0 +1,1 @@
+import{_ as t,c as r,a as o,o as a}from"./index-ZwJaeH-t.js";const n={};function s(c,e){return a(),r("div",null,e[0]||(e[0]=[o("h2",{class:"text-xl font-bold"},"Overview paciente",-1),o("p",null,"Welcome to the overview section of the dashboard.",-1)]))}const i=t(n,[["render",s]]);export{i as default};

@@ -1,0 +1,1 @@
+import{_ as t,c as r,a as o,o as s}from"./index-ZwJaeH-t.js";const a={};function n(c,e){return s(),r("div",null,e[0]||(e[0]=[o("h2",{class:"text-xl font-bold"},"Overview",-1),o("p",null,"Welcome to the overview section of the dashboard.",-1)]))}const d=t(a,[["render",n]]);export{d as default};
