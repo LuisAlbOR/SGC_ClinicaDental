@@ -1,8 +1,8 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory, createWebHistory } from "vue-router";
 import NotFound from "@/modules/common/pages/NoFound.vue";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(),
   routes: [
     {
       path: "/",
