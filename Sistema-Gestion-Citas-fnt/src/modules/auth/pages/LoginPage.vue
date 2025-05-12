@@ -1,7 +1,7 @@
 <template>
   <div class="lg:w-1/2 xl:w-2/4 p-6 sm:p-12">
     <div class="flex justify-center items-center">
-      <img src="../../../../public/Clinica_Logo.png" class="w-4/12 rounded-full" />
+      <img src="../../../../public/Logo.jpg" class="w-4/12 rounded-full" />
     </div>
     <div class="mt-12 flex flex-col items-center">
       <div class="w-full flex-1 mt-8">
@@ -101,6 +101,7 @@ const login = async () => {
       data.nombre = response.data.nombre;
       data.apellido = response.data.apellido;
       data.ocupacion = response.data.ocupacion;
+      verification(data);
 
     } else {
       notificationMessage.value = 'Error en el login: ' + response.statusText;
@@ -117,9 +118,10 @@ const login = async () => {
       notificationMessage.value = 'Error en la solicitud: ' + error.message;
       notificationType.value = 'error';
     }
-  } finally {
-    verification(data);
-  }
+  }finally{
+      isLoading.value = false;
+      showNotification.value = true;
+    }
 };
 
 const handleKeyupEnter = () => {

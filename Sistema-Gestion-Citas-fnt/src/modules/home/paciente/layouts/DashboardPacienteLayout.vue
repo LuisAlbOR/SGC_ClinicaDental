@@ -38,7 +38,7 @@
         </ul>
       </nav>
       <footer class="p-4 bg-gray-900 text-center">
-        <span>© 2024 Clínica Santa María</span>
+        <span>© 2025 Clínica dental Dra. Arios Sayde Molina Nieto</span>
       </footer>
     </aside>
 

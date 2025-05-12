@@ -5,8 +5,8 @@
       <RouterView />
       <div class="flex-1 bg-blue-200 text-center hidden lg:flex">
         <div class="m-12 xl:m-1.5 w-full flex justify-center">
-          <div class="w-1/2 flex justify-center items-center bg-contain bg-center bg-no-repeat">
-            <img src="../../../../public/undraw_medicine_b-1-ol.svg" class="w-full h-auto" />
+          <div class="w-full flex justify-center items-center bg-contain bg-center bg-no-repeat">
+            <img src="../../../../public/Login_Image.jpg" class="h-full" />
           </div>
 
         </div>
