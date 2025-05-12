@@ -15,6 +15,6 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  base: 'SGC_ClinicaDental', // <-- usa tu nombre de repositorio aquí
+  base: '/SGC_ClinicaDental/', // <-- usa tu nombre de repositorio aquí
 
 })
